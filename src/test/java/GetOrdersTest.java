@@ -19,22 +19,20 @@ public class GetOrdersTest {
 
     @Step("Send request")
     public Response sendRequest(String route){
-        Response response = given()
+        return given()
                 .header("Content-type", "application/json")
                 .get(route);
-        return response;
     }
 
     @Step("Parse the body and assert the orders[]")
     public void assertBody(Response response){
-        ResponseBody body = response.getBody();
-        GetOrderSerial order = body.as(GetOrderSerial.class);
+        GetOrderSerial order = response.getBody().as(GetOrderSerial.class);
         MatcherAssert.assertThat(order.getOrders(), notNullValue());
     }
 
 
     @Test
-    @DisplayName("Check the body with orders[]")
+    @DisplayName("Check the body with orders[git@github.com:darth-kate/Sprint_7.git]")
     public void ordersArrayIsPresent() {
         Response response = sendRequest("/orders");
         assertBody(response);
