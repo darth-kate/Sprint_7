@@ -1,4 +1,4 @@
-package Serial;
+package serial;
 
 public class PostOrdersTestSerial {
     private String firstName;

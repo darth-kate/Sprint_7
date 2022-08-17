@@ -1,8 +1,8 @@
-package Tests;
+package tests;
 
-import Serial.LoginCourierSerial;
-import Steps.CourierSteps;
-import URLs.Urls;
+import serial.LoginCourierSerial;
+import steps.CourierSteps;
+import urls.Urls;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.After;

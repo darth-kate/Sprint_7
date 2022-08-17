@@ -1,4 +1,4 @@
-package Serial;
+package serial;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginCourierSerial {
+
+public class PostCourierSerial {
     private String login;
     private String password;
+    private String firstName;
 
 }

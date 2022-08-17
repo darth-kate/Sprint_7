@@ -1,4 +1,4 @@
-package URLs;
+package urls;
 
 public abstract class Urls {
     public static final String URL =  "https://qa-scooter.praktikum-services.ru/api/v1";

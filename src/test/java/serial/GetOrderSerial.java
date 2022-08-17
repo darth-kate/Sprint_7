@@ -1,8 +1,5 @@
-package Serial;
+package serial;
 
-import Serial.AvailableStationSerial;
-import Serial.OrdersSerial;
-import Serial.PageInfoSerial;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,11 +1,11 @@
-package Steps;
+package steps;
 
-import Serial.GetOrderSerial;
-import Serial.PostOrdersTestSerial;
+import serial.GetOrderSerial;
+import serial.PostOrdersTestSerial;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.hamcrest.MatcherAssert;
-import URLs.Urls;
+import urls.Urls;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.any;

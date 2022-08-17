@@ -1,7 +1,7 @@
-package Tests;
+package tests;
 
-import Steps.OrderSteps;
-import URLs.Urls;
+import steps.OrderSteps;
+import urls.Urls;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.Before;

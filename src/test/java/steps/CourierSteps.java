@@ -1,7 +1,7 @@
-package Steps;
+package steps;
 
-import Serial.PostCourierSerial;
-import Serial.LoginCourierSerial;
+import serial.PostCourierSerial;
+import serial.LoginCourierSerial;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;

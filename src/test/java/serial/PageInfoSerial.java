@@ -1,4 +1,4 @@
-package Serial;
+package serial;
 
 import lombok.Getter;
 import lombok.Setter;
