@@ -74,7 +74,7 @@ public class PostCourierTest {
     @DisplayName("POST /courier register courier without firstName successfully")
     public void RegWithoutFirstNameTest() {
         CourierSteps steps = new CourierSteps();
-        Response response = steps.createCourier(Urls.POST_COURIER, login, password, "Courier");
+        Response response = steps.createCourier(Urls.POST_COURIER, login, password, "");
         steps.compareOk(response, true);
         steps.assertStatusCode(response, SC_CREATED);
     }
