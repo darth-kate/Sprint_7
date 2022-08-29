@@ -1,10 +1,12 @@
 package steps;
 
+import io.restassured.path.json.JsonPath;
 import serial.PostCourierSerial;
 import serial.LoginCourierSerial;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import urls.Urls;
 
 
 import java.util.Locale;
@@ -15,6 +17,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class CourierSteps {
     private static String login;
+    private static String password;
 
     @Step("Compare ok to true")
     public void compareOk(Response response, boolean ok) {
@@ -74,4 +77,20 @@ public class CourierSteps {
         response.then().assertThat().body("id", any(Integer.class));
     }
 
+    @Step("Delete Courier")
+    public Response deleteCourier(Integer courierId) {
+        Response response = given()
+                .header("Content-type", "application/json")
+                .when()
+                .delete(Urls.DELETE_COURIER, courierId);
+        return response;
+    }
+
+    @Step("Extract courierId")
+    public int extractCourierId(String route, String login, String password, String methodName) {
+        Response response = sendRequestLogin(route, login, password, methodName);
+        JsonPath jsonPathEvaluator = response.jsonPath();
+        int courierId = jsonPathEvaluator.get("id");
+        return  courierId;
+    }
 }

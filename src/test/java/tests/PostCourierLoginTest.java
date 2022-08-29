@@ -1,6 +1,5 @@
 package tests;
 
-import serial.LoginCourierSerial;
 import steps.CourierSteps;
 import urls.Urls;
 import io.restassured.RestAssured;
@@ -12,9 +11,6 @@ import io.qameta.allure.junit4.*;
 import static org.apache.http.HttpStatus.*;
 
 import java.util.Random;
-
-import static io.restassured.RestAssured.given;
-
 
 public class PostCourierLoginTest {
     private final static Random random = new Random();
@@ -79,24 +75,10 @@ public class PostCourierLoginTest {
         if (!login.contains("test_courier_")) {
             return;
         }
-        LoginCourierSerial courier = new LoginCourierSerial(login, password);
-        int courierId = given()
-                .header("Content-type", "application/json")
-                .and()
-                .body(courier)
-                .when()
-                .post(Urls.LOGIN_COURIER)
-                .then()
-                .extract()
-                .body()
-                .path("id");
-        given()
-                .header("Content-type", "application/json")
-                .and()
-                .body(courier)
-                .when()
-                .delete("/courier/{courierId}", courierId)
-                .then().assertThat().statusCode(SC_OK);
+        CourierSteps steps = new CourierSteps();
+        int courierId = steps.extractCourierId(Urls.LOGIN_COURIER, login, password, "POST");
+        Response response = steps.deleteCourier(courierId);
+        steps.assertStatusCode(response, SC_OK);
 
     }
 
