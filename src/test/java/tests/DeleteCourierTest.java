@@ -1,6 +1,4 @@
 package tests;
-import serial.LoginCourierSerial;
-import serial.PostCourierSerial;
 import steps.CourierSteps;
 import urls.Urls;
 import io.restassured.RestAssured;

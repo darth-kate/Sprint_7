@@ -9,8 +9,7 @@ import org.hamcrest.MatcherAssert;
 import urls.Urls;
 
 import static io.restassured.RestAssured.given;
-import static org.apache.http.HttpStatus.SC_CREATED;
-import static org.apache.http.HttpStatus.SC_OK;
+import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.any;
 import static org.hamcrest.Matchers.notNullValue;
 
@@ -63,11 +62,17 @@ public class OrderSteps {
         return  track;
     }
 
-    @Step("Extract orderId with track")
-    public int extractOrderId(int track) {
+    @Step("Get an order with track")
+    public Response getOrder(Integer track) {
         Response response = given()
                 .header("Content-type", "application/json")
                 .queryParam("t",track).get(Urls.GET_ORDER);
+        return response;
+    }
+
+    @Step("Extract orderId with track")
+    public int extractOrderId(int track) {
+        Response response = getOrder(track);
         assertStatusCode(response, SC_OK);
         JsonPath jsonPathEvaluator = response.jsonPath();
         int orderId = jsonPathEvaluator.get("order.id");
